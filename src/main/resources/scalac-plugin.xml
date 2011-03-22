@@ -1,0 +1,4 @@
+<plugin>
+  <name>scholia</name>
+  <classname>scholia.DocPlugin</classname>
+</plugin>
