@@ -36,8 +36,8 @@ case class T(outputDirectory: File) {
   import T._
 
   val baseCss = new File(outputDirectory, CSSRelativePath)
-	val shCoreJs = new File(outputDirectory, JSShCoreRelativePath)
-	val shCoreCss = new File(outputDirectory, CSSShCoreRelativePath)
+  val shCoreJs = new File(outputDirectory, JSShCoreRelativePath)
+  val shCoreCss = new File(outputDirectory, CSSShCoreRelativePath)
   val shThemeCss = new File(outputDirectory, CSSShThemeRelativePath)
   val shBrushJs = new File(outputDirectory, JSShBrushRelativePath)
 
@@ -97,24 +97,24 @@ abstract class Doc extends Plugin {
 
   def classDirectory: File
 
-	def getRelativeSourcePath(source: File): String
+  def getRelativeSourcePath(source: File): String
 
   def projectName: String
 
   def projectDesc: String
 
-	val global: Global
+  val global: Global
   import global._
 
   lazy val outputDirectory = new File(classDirectory.getParentFile, classDirectory.getName + "-lit")
-	outputDirectory.mkdirs
+  outputDirectory.mkdirs
 
   // Performs extraction of comments and application to template generator
-	def generateOutput() {
+  def generateOutput() {
 
-		val sourceFiles = currentRun.units.toList.flatMap(getSourceFile(_))
+    val sourceFiles = currentRun.units.toList.flatMap(getSourceFile(_))
 
-		if (sourceFiles.size > 0) {
+    if (sourceFiles.size > 0) {
 
       val index = new File(outputDirectory, "index.html")
 
@@ -139,10 +139,10 @@ abstract class Doc extends Plugin {
             def next(i: Int, comments: List[Comments]) {
 
               def escape(s: String) =
-			          s.replace(">", "&gt;")
-			           .replace("&", "&amp;")
-			           .replace("<", "&lt;")
-			           .replace("\"","&quot;")
+                s.replace(">", "&gt;")
+                  .replace("&", "&amp;")
+                  .replace("<", "&lt;")
+                  .replace("\"","&quot;")
 
                def consume[A](chars: Int)(include: Char => Boolean)(after: String => A) = {
                  // Buffer.empty[Byte] in 2.8
